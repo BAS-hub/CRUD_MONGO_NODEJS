@@ -1,0 +1,30 @@
+extends layout
+
+block get
+    each item in items
+        div.row(style ="width:50%; text-align:center; margin:auto;")
+            .col-md-6
+                - var thumb = new Buffer(item.image.data).toString('base64');
+                img(src=`data:image/jpeg;base64, ${thumb}` style="width:150px;")
+            .col-md-6(style ="text-align:center; font-size: 14px; margin:auto;")
+                .container
+                    | _id : 
+                    span._id= item._id
+                .container
+                    | title : 
+                    span.item_title= item.title
+                .container
+                    | description : 
+                    span.item_description= item.description
+                .container
+                    | price : 
+                    span.item_price= item.price
+                .container
+                    | created_at : 
+                    span.item_created_at= item.created_at
+                .container
+                    if item.updated_at
+                        | updated_at : 
+                        span.item_updated_at= item.updated_at
+                    else
+                        p updated_at : null

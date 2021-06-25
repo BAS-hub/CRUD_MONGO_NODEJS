@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+    mongo:
+        image: mongo
+        restart: always
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: admin
+            MONGO_INITDB_ROOT_PASSWORD: admin
+        ports:
+            - 27017:27017
+        volumes:
+            - .data/mongodb:/data/db
+        logging:
+            options:
+                max-size: "10m"
+                max-file: "3"
+    app:
+        build: .
+        restart: always
+        # volumes:
+        #     - /app/node_modules
+        #     - .:/app
+        ports:
+            - 5000:5000
+        logging:
+            options:
+                max-size: "10m"
+                max-file: "3"  
+
+    

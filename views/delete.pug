@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1(style="padding-top:50px") Please insert specific _id
+  form(action=`/api/v1/delete/each` method='get' enctype='multipart/form-data'  style="padding-top:50px")
+    .row
+      .col-md-3
+        input(type="text" name="id" placeholder="_id" )
+        button(type="submit" class="btn btn-primary" style="width:80px; height:30px; text-align:center; margin:0;") Submit
+        message= message
+        if message
+          p message
