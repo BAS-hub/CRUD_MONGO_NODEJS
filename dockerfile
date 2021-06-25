@@ -1,8 +1,8 @@
 FROM node:16
-RUN mkdir -p /app/
-WORKDIR /app
-COPY package.json /app
+WORKDIR /usr/src/app
+COPY package.json /usr/src/app
 RUN npm install
-COPY . /app
+
+COPY . /usr/src/app
 EXPOSE 5000
-CMD ["npm","run","start"]
+CMD ["npm","start"]
